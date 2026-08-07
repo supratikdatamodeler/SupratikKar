@@ -12,18 +12,24 @@ const basePath = process.env.GITHUB_PAGES_BASE_PATH ?? (repository && !isUserSit
 const publicHost = `${owner}.github.io`;
 const publicOrigin = `https://${publicHost}${basePath}`;
 
-function resolveWorker(moduleNamespace) {
+function resolveWorkerFetch(moduleNamespace) {
   const worker = [moduleNamespace, moduleNamespace.default, moduleNamespace.default?.default].find(
     (candidate) => typeof candidate?.fetch === "function",
   );
 
-  if (!worker) {
-    throw new TypeError(
-      `Generated worker module does not expose fetch(); exports: ${Object.keys(moduleNamespace).join(", ") || "none"}`,
-    );
-  }
+  if (worker) return worker.fetch.bind(worker);
 
-  return worker;
+  const rscHandler = [moduleNamespace.default, moduleNamespace.default?.default].find(
+    (candidate) => typeof candidate === "function",
+  );
+
+  // On Linux, Vinext can emit the RSC request handler as the default server
+  // export instead of wrapping it in a Cloudflare Worker-style { fetch } object.
+  if (rscHandler) return (request, _env, ctx) => rscHandler(request, ctx);
+
+  throw new TypeError(
+    `Generated server module exposes neither fetch() nor a request handler; exports: ${Object.keys(moduleNamespace).join(", ") || "none"}`,
+  );
 }
 
 await rm(outputDir, { recursive: true, force: true });
@@ -32,8 +38,8 @@ await cp(clientDir, outputDir, { recursive: true });
 
 const workerUrl = pathToFileURL(path.join(projectRoot, "dist", "server", "index.js"));
 workerUrl.searchParams.set("staticExport", `${Date.now()}`);
-const worker = resolveWorker(await import(workerUrl.href));
-const response = await worker.fetch(
+const fetchSite = resolveWorkerFetch(await import(workerUrl.href));
+const response = await fetchSite(
   new Request(`https://${publicHost}/`, {
     headers: {
       accept: "text/html",

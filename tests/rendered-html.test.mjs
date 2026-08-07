@@ -2,26 +2,32 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
 
-function resolveWorker(moduleNamespace) {
+function resolveWorkerFetch(moduleNamespace) {
   const worker = [moduleNamespace, moduleNamespace.default, moduleNamespace.default?.default].find(
     (candidate) => typeof candidate?.fetch === "function",
   );
 
-  if (!worker) {
-    throw new TypeError(
-      `Generated worker module does not expose fetch(); exports: ${Object.keys(moduleNamespace).join(", ") || "none"}`,
-    );
-  }
+  if (worker) return worker.fetch.bind(worker);
 
-  return worker;
+  const rscHandler = [moduleNamespace.default, moduleNamespace.default?.default].find(
+    (candidate) => typeof candidate === "function",
+  );
+
+  // On Linux, Vinext can emit the RSC request handler as the default server
+  // export instead of wrapping it in a Cloudflare Worker-style { fetch } object.
+  if (rscHandler) return (request, _env, ctx) => rscHandler(request, ctx);
+
+  throw new TypeError(
+    `Generated server module exposes neither fetch() nor a request handler; exports: ${Object.keys(moduleNamespace).join(", ") || "none"}`,
+  );
 }
 
 async function render() {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
-  const worker = resolveWorker(await import(workerUrl.href));
+  const fetchSite = resolveWorkerFetch(await import(workerUrl.href));
 
-  return worker.fetch(
+  return fetchSite(
     new Request("https://supratik-kar-research.example/", {
       headers: { accept: "text/html", "x-forwarded-host": "supratik-kar-research.example", "x-forwarded-proto": "https" },
     }),
@@ -29,6 +35,20 @@ async function render() {
     { waitUntil() {}, passThroughOnException() {} },
   );
 }
+
+test("supports Vinext's Linux request-handler export", async () => {
+  const fetchSite = resolveWorkerFetch({
+    default: async (request, ctx) => new Response(`${new URL(request.url).pathname}:${typeof ctx.waitUntil}`),
+    generateStaticParamsMap: {},
+  });
+  const response = await fetchSite(
+    new Request("https://example.test/linux-export"),
+    {},
+    { waitUntil() {}, passThroughOnException() {} },
+  );
+
+  assert.equal(await response.text(), "/linux-export:function");
+});
 
 test("server-renders the finished research site", async () => {
   const response = await render();
