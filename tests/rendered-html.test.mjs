@@ -2,10 +2,24 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
 
+function resolveWorker(moduleNamespace) {
+  const worker = [moduleNamespace, moduleNamespace.default, moduleNamespace.default?.default].find(
+    (candidate) => typeof candidate?.fetch === "function",
+  );
+
+  if (!worker) {
+    throw new TypeError(
+      `Generated worker module does not expose fetch(); exports: ${Object.keys(moduleNamespace).join(", ") || "none"}`,
+    );
+  }
+
+  return worker;
+}
+
 async function render() {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
-  const { default: worker } = await import(workerUrl.href);
+  const worker = resolveWorker(await import(workerUrl.href));
 
   return worker.fetch(
     new Request("https://supratik-kar-research.example/", {

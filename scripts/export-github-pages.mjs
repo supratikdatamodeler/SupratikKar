@@ -12,13 +12,27 @@ const basePath = process.env.GITHUB_PAGES_BASE_PATH ?? (repository && !isUserSit
 const publicHost = `${owner}.github.io`;
 const publicOrigin = `https://${publicHost}${basePath}`;
 
+function resolveWorker(moduleNamespace) {
+  const worker = [moduleNamespace, moduleNamespace.default, moduleNamespace.default?.default].find(
+    (candidate) => typeof candidate?.fetch === "function",
+  );
+
+  if (!worker) {
+    throw new TypeError(
+      `Generated worker module does not expose fetch(); exports: ${Object.keys(moduleNamespace).join(", ") || "none"}`,
+    );
+  }
+
+  return worker;
+}
+
 await rm(outputDir, { recursive: true, force: true });
 await mkdir(outputDir, { recursive: true });
 await cp(clientDir, outputDir, { recursive: true });
 
 const workerUrl = pathToFileURL(path.join(projectRoot, "dist", "server", "index.js"));
 workerUrl.searchParams.set("staticExport", `${Date.now()}`);
-const { default: worker } = await import(workerUrl.href);
+const worker = resolveWorker(await import(workerUrl.href));
 const response = await worker.fetch(
   new Request(`https://${publicHost}/`, {
     headers: {
