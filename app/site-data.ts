@@ -26,6 +26,7 @@ export const books = [
 ];
 
 export const publications = [
+  { year: "2026", journal: "Expert Opinion on Drug Metabolism & Toxicology", title: "Inavolisib: a second-generation PI3Kα inhibitor in HR+/HER2-negative breast cancer", meta: "22 · 483–494", href: "https://doi.org/10.1080/17425255.2026.2710110" },
   { year: "2026", journal: "Scientific Reports", title: "KidneyTox_v1.0 enables explainable artificial intelligence prediction of nephrotoxicity in small molecules", meta: "16 · 5099", href: "https://doi.org/10.1038/s41598-026-35496-4" },
   { year: "2026", journal: "ACS Omega", title: "KOC-WebPredictor: An open-access tool for prediction and insights into soil sorption", meta: "11 · 19083–19093", href: "https://doi.org/10.1021/acsomega.5c11696" },
   { year: "2026", journal: "Aquatic Toxicology", title: "Biomarker-guided q-RASAR modeling of antibiotics–microplastics mixtures", meta: "107819", href: "https://doi.org/10.1016/j.aquatox.2026.107819" },
@@ -50,10 +51,10 @@ export const publications = [
   { year: "2022", journal: "Chemical Reviews", title: "Green chemistry in the synthesis of pharmaceuticals", meta: "122 · 3637–3710", href: "https://doi.org/10.1021/acs.chemrev.1c00631" },
   { year: "2022", journal: "SAR and QSAR in Environmental Research", title: "Potential antivirals against 3CLpro for treatment of SARS-CoV-2", meta: "33 · 357–386", href: "https://doi.org/10.1080/1062936X.2022.2055140" },
   { year: "2021", journal: "Chemosphere", title: "Mechanistic evaluation of metal oxide nanoparticle cytotoxicity", meta: "264 · 128428", href: "https://doi.org/10.1016/j.chemosphere.2020.128428" },
-  { year: "2020", journal: "Expert Opinion on Drug Discovery", title: "Open-access in silico tools for ADMET profiling", meta: "Review", href: "https://doi.org/10.1080/17460441.2020.1798926" },
 ];
 
 export const tools = [
+  { state: "Live tool", title: "MammalTox", text: "Open-access computational screening of mammalian toxicity for rapid, responsible chemical-safety assessment.", href: "https://mammaltox.streamlit.app/", link: "Launch MammalTox" },
   { state: "Live tool", title: "KidneyTox_v1.0", text: "Explainable AI classification of small-molecule nephrotoxicity with applicability-domain and SHAP interpretation.", href: "https://kidneytoxv1.streamlit.app/", link: "Launch KidneyTox" },
   { state: "Live tool", title: "KOC-WebPredictor", text: "QSAR and machine-learning predictions of soil organic-carbon sorption.", href: "https://koc-predictorv1.streamlit.app/", link: "Launch KOC-WebPredictor" },
   { state: "Live tool", title: "pDILI_v1", text: "Screening and visualization of drug-induced liver-injury risk.", href: "https://pdiliv1web.streamlit.app/", link: "Launch pDILI" },
@@ -132,13 +133,104 @@ export const editorialRoles = [
 ];
 
 export const memberships = [
-  { title: "American Chemical Society", label: "Professional membership", text: "Participation in the world’s largest scientific society for chemistry and related disciplines." },
-  { title: "Phi Kappa Phi", label: "Faculty inductee · 2025", text: "Member of the nation’s oldest and most selective all-discipline collegiate honor society." },
+  { title: "American Chemical Society", label: "Professional membership", text: "Participation in the world's largest scientific society for chemistry and related disciplines." },
+  { title: "Phi Kappa Phi", label: "Faculty inductee · 2025", text: "Member of the nation's oldest and most selective all-discipline collegiate honor society." },
   { title: "Bentham Science", label: "Brand Ambassador · since 2016", text: "Longstanding scientific publishing and outreach service." },
 ];
 
+export const newsItems = [
+  {
+    year: "2025",
+    date: "December 9",
+    source: "Kean University",
+    title: "Kean Professor Leading Research Toward Zika Virus Treatment",
+    image: "/news/zika-2025.webp",
+    href: "https://www.kean.edu/news/kean-professor-leading-research-toward-zika-virus-treatment",
+  },
+  {
+    year: "2025",
+    date: "September 23",
+    source: "Kean University",
+    title: "Kean Faculty Recognized Again Among World’s Top 2% of Scientists",
+    image: "/news/top-scientists-2025.webp",
+    href: "https://www.kean.edu/news/kean-faculty-recognized-again-among-worlds-top-2-scientists",
+  },
+  {
+    year: "2025",
+    date: "September 12",
+    source: "ROI-NJ",
+    title: "Kean University Gets NSF Grant to Probe Biological Insecticides Originating from Fungi",
+    image: "/news/nsf-fungi-2025.webp",
+    href: "https://www.roi-nj.com/2025/09/12/education/kean-university-gets-nsf-grant-to-probe-biological-insecticides-originating-from-fungi/",
+  },
+  {
+    year: "2025",
+    date: "September 8",
+    source: "Kean University",
+    title: "Kean University Awarded National Science Foundation Grant to Explore Biological Insecticides Originating from Fungi",
+    image: "/news/nsf-fungi-2025.webp",
+    href: "https://www.kean.edu/news/kean-university-awarded-national-science-foundation-grant-explore-biological-insecticides",
+  },
+  {
+    year: "2025",
+    date: "January 16",
+    source: "Phi Kappa Phi Merit Pages",
+    title: "Supratik Kar Elected to Membership into The Honor Society of Phi Kappa Phi",
+    image: "/news/qa-2024.webp",
+    href: "https://meritpages.com/supratikkar",
+  },
+  {
+    year: "2024",
+    date: "November 6",
+    source: "The Link News",
+    title: "Two Kean University Faculty Named Among the World’s Top 2% of Scientists",
+    image: "/news/top-scientists-2024.webp",
+    href: "https://thelinknews.net/2024/11/06/two-kean-university-faculty-named-among-the-worlds-top-2-of-scientists/",
+  },
+  {
+    year: "2024",
+    date: "October",
+    source: "TAPinto Cranford",
+    title: "Two Kean University Faculty Named Among the World’s Top 2% of Scientists",
+    image: "/news/top-scientists-2024.webp",
+    href: "https://www.tapinto.net/towns/cranford/sections/education/articles/two-kean-university-faculty-named-among-the-world-s-top-2-of-scientists",
+  },
+  {
+    year: "2024",
+    date: "October 15",
+    source: "Kean University",
+    title: "Two Kean Faculty Named Among the World’s Top 2% of Scientists",
+    image: "/news/top-scientists-2024.webp",
+    href: "https://www.kean.edu/news/two-kean-faculty-named-among-worlds-top-2-scientists",
+  },
+  {
+    year: "2024",
+    date: "March 5",
+    source: "Kean University",
+    title: "Q&A: Faculty Researcher Supratik Kar, Ph.D.",
+    image: "/news/qa-2024.webp",
+    href: "https://www.kean.edu/news/qa-faculty-researcher-supratik-kar-phd",
+  },
+  {
+    year: "2023",
+    date: "November",
+    source: "TAPinto Union",
+    title: "Kean University Assistant Professor Named Among Top 2% of Scientists Worldwide",
+    image: "/news/top-scientist-2023.webp",
+    href: "https://www.tapinto.net/towns/union/articles/kean-university-assistant-professor-named-among-top-2-of-scientists-worldwide",
+  },
+  {
+    year: "2023",
+    date: "November 13",
+    source: "Kean University",
+    title: "Kean Assistant Professor Named Among Top 2% of Scientists Worldwide",
+    image: "/news/top-scientist-2023.webp",
+    href: "https://www.kean.edu/news/kean-assistant-professor-named-among-top-2-scientists-worldwide",
+  },
+];
+
 export const galleryEras = [
-  { title: "Kean University years", period: "2022—present", prefix: "kean", count: 21 },
+  { title: "Kean University years", period: "2022—present", prefix: "kean", count: 24 },
   { title: "CMM Laboratory", period: "Mentorship & research", prefix: "cmm", count: 20 },
   { title: "Jackson State University", period: "Postdoctoral years · 2015—2022", prefix: "jsu", count: 12 },
   { title: "University of Gdańsk", period: "Marie-Curie exchange · 2013—2014", prefix: "gdansk", count: 4 },

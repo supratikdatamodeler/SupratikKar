@@ -1,6 +1,6 @@
 ﻿import {
   alumni, awards, books, currentMembers, editorialRoles, galleryEras, grants,
-  memberships, profiles, publications, researchAreas, tools,
+  memberships, newsItems, profiles, publications, researchAreas, tools,
 } from "./site-data";
 
 function ExternalLink({ href, children, className = "" }: { href: string; children: React.ReactNode; className?: string }) {
@@ -16,15 +16,17 @@ function PersonImage({ name, image }: { name: string; image?: string }) {
 }
 
 export default function Home() {
+  const newsYears = [...new Set(newsItems.map((item) => item.year))];
+
   return (
     <main id="top">
       <header className="site-header">
         <a className="brand" href="#top" aria-label="Dr. Supratik Kar home"><img className="brand-logo" src="/cmm-logo.png" alt="" /><span><strong>Dr. Supratik Kar</strong><small>Scientist, Educator, Mentor.</small></span></a>
         <nav className="desktop-nav" aria-label="Primary navigation">
-          <a href="#about">About</a><a href="#research">Research</a><a href="#publications">Publications</a><a href="#tools">Tools</a><a href="#funding">Funding</a><a href="#people">CMM Lab</a><a href="#recognition">Recognition</a><a href="#gallery">Gallery</a>
+          <a href="#about">About</a><a href="#research">Research</a><a href="#publications">Publications</a><a href="#tools">Tools</a><a href="#funding">Funding</a><a href="#people">CMM Lab</a><a href="#recognition">Recognition</a><a href="#news">News</a><a href="#gallery">Gallery</a>
         </nav>
         <a className="header-contact" href="#contact">Contact <span aria-hidden="true">↓</span></a>
-        <details className="mobile-nav"><summary aria-label="Open navigation"><span></span><span></span><span></span></summary><div><a href="#about">About</a><a href="#research">Research</a><a href="#publications">Publications</a><a href="#tools">Tools</a><a href="#funding">Funding</a><a href="#people">CMM Lab</a><a href="#recognition">Recognition</a><a href="#gallery">Gallery</a><a href="#contact">Contact</a></div></details>
+        <details className="mobile-nav"><summary aria-label="Open navigation"><span></span><span></span><span></span></summary><div><a href="#about">About</a><a href="#research">Research</a><a href="#publications">Publications</a><a href="#tools">Tools</a><a href="#funding">Funding</a><a href="#people">CMM Lab</a><a href="#recognition">Recognition</a><a href="#news">News</a><a href="#gallery">Gallery</a><a href="#contact">Contact</a></div></details>
       </header>
 
       <section className="hero" aria-labelledby="hero-title">
@@ -42,8 +44,8 @@ export default function Home() {
           <div className="orbit orbit-one" aria-hidden="true"></div><div className="orbit orbit-two" aria-hidden="true"></div>
         </div>
         <div className="hero-stats" aria-label="Current research metrics">
-          <div><strong>124</strong><span>Peer-reviewed<br />articles</span></div><div><strong>2</strong><span>International<br />textbooks</span></div><div><strong>3</strong><span>Edited<br />books</span></div><div><strong>29</strong><span>Published book<br />chapters</span></div>
-          <div><strong>6</strong><span>Edited thematic<br />issues</span></div><div><strong>10,561</strong><span>Google Scholar<br />citations</span></div><div><strong>51</strong><span>Google Scholar<br />h-index</span></div><div><strong>$1.435M</strong><span>Funding<br />secured</span></div>
+          <div><strong>125</strong><span>Peer-reviewed<br />articles</span></div><div><strong>2</strong><span>International<br />textbooks</span></div><div><strong>3</strong><span>Edited<br />books</span></div><div><strong>30</strong><span>Published book<br />chapters</span></div>
+          <div><strong>6</strong><span>Edited thematic<br />issues</span></div><div><strong>10,740</strong><span>Google Scholar<br />citations</span></div><div><strong>51</strong><span>Google Scholar<br />h-index</span></div><div><strong>$1.435M</strong><span>Funding<br />secured</span></div>
         </div>
       </section>
 
@@ -75,8 +77,8 @@ export default function Home() {
       </section>
 
       <section className="section publications" id="publications">
-        <SectionHeading eyebrow="03 · Publications" title="A record built across fields." intro="Books, chapters and 124 peer-reviewed articles connecting foundational QSAR methods to current AI-enabled discovery." />
-        <div className="publication-summary"><div className="publication-counts"><div><strong>124</strong><span>Peer-reviewed articles</span></div><div><strong>2</strong><span>Textbooks</span></div><div><strong>3</strong><span>Edited books</span></div><div><strong>29</strong><span>Published chapters</span></div><div><strong>6</strong><span>Thematic issues</span></div></div><p>Published across <em>Chemical Reviews</em>, <em>Scientific Reports</em>, <em>Green Chemistry</em>, <em>Journal of Hazardous Materials</em>, <em>Chemosphere</em>, <em>ACS Omega</em> and other international journals.</p></div>
+        <SectionHeading eyebrow="03 · Publications" title="A record built across fields." intro="Books, chapters and 125 peer-reviewed articles connecting foundational QSAR methods to current AI-enabled discovery." />
+        <div className="publication-summary"><div className="publication-counts"><div><strong>125</strong><span>Peer-reviewed articles</span></div><div><strong>2</strong><span>Textbooks</span></div><div><strong>3</strong><span>Edited books</span></div><div><strong>30</strong><span>Published chapters</span></div><div><strong>6</strong><span>Thematic issues</span></div></div><p>Published across <em>Chemical Reviews</em>, <em>Scientific Reports</em>, <em>Green Chemistry</em>, <em>Journal of Hazardous Materials</em>, <em>Chemosphere</em>, <em>ACS Omega</em> and other international journals.</p></div>
         <div className="books-panel"><div className="books-intro"><p className="eyebrow">Bookshelf</p><h3>Five foundational and edited volumes</h3><p>Two widely used QSAR textbooks and three edited volumes spanning solar cells, drug discovery, and chem- and bioinformatics.</p></div><div className="book-list">{books.map((book, index) => <ExternalLink href={book.href} className="book-row" key={book.title}><span>{String(index + 1).padStart(2, "0")}</span><span><small>{book.kind}</small><strong>{book.title}</strong></span><time>{book.year}</time></ExternalLink>)}</div></div>
         <div className="selected-header"><div><p className="eyebrow">Selected recent publications</p><h3>Latest 25 papers</h3></div><div className="record-links"><ExternalLink href="https://scholar.google.com/citations?user=kzGUHjYAAAAJ&hl=en">Complete record on Google Scholar</ExternalLink><ExternalLink href="https://researchers.kean.edu/en/persons/supratik-kar/">142 outputs on Kean Research</ExternalLink></div></div>
         <div className="paper-list">{publications.map((paper, index) => <ExternalLink href={paper.href} className="paper-row" key={paper.title}><span><small>{String(index + 1).padStart(2, "0")} · {paper.journal}</small><strong>{paper.title}</strong></span><span className="paper-meta">{paper.meta}</span></ExternalLink>)}</div>
@@ -112,13 +114,36 @@ export default function Home() {
         <div className="membership-grid">{memberships.map((item) => <article key={item.title}><small>{item.label}</small><h3>{item.title}</h3><p>{item.text}</p></article>)}</div>
       </section>
 
+      <section className="section news-section" id="news">
+        <SectionHeading eyebrow="08 · News & media" title="Research in the news." intro="Selected institutional and regional coverage of research, recognition, funding and scientific mentorship, arranged by year." />
+        <div className="news-years">
+          {newsYears.map((year) => (
+            <section className="news-year-group" aria-labelledby={`news-${year}`} key={year}>
+              <div className="news-year-heading"><span id={`news-${year}`}>{year}</span><p>{newsItems.filter((item) => item.year === year).length} stories</p></div>
+              <div className="news-grid">
+                {newsItems.filter((item) => item.year === year).map((item) => (
+                  <article className="news-card" key={item.href}>
+                    <a className="news-image" href={item.href} target="_blank" rel="noreferrer"><img src={item.image} alt="" loading="lazy" /></a>
+                    <div className="news-card-body">
+                      <div className="news-meta"><span>{item.source}</span><time>{item.date}</time></div>
+                      <h3><a href={item.href} target="_blank" rel="noreferrer">{item.title}</a></h3>
+                      <ExternalLink className="news-link" href={item.href}>Read full story</ExternalLink>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </section>
+          ))}
+        </div>
+      </section>
+
       <section className="section gallery-section" id="gallery">
-        <SectionHeading eyebrow="08 · Gallery" title="A research journey, era by era." intro="The complete photographic archive from the previous website, organized across Kean, the CMM Laboratory, Jackson State University, Gdańsk and Jadavpur University." />
+        <SectionHeading eyebrow="09 · Gallery" title="A research journey, era by era." intro="The complete photographic archive from the previous website, organized across Kean, the CMM Laboratory, Jackson State University, Gdańsk and Jadavpur University." />
         <div className="gallery-eras">{galleryEras.map((era) => <details className="gallery-era" key={era.prefix} open><summary><span><strong>{era.title}</strong><small>{era.period}</small></span><b>{era.count} photographs</b></summary><div className="era-grid">{Array.from({ length: era.count }, (_, index) => <figure key={era.prefix + index}><img src={`/gallery/wix/${era.prefix}-${String(index + 1).padStart(2, "0")}.webp`} alt={`${era.title}, photograph ${index + 1}`} loading="lazy" /><figcaption><span>{String(index + 1).padStart(2, "0")}</span>{era.title}</figcaption></figure>)}</div></details>)}</div>
       </section>
 
       <section className="contact section" id="contact">
-        <div className="contact-orbit" aria-hidden="true"></div><p className="eyebrow">09 · Contact</p><h2>Let&apos;s connect around <em>predictive science.</em></h2><p>For research collaborations, student mentorship, editorial work and invited talks, contact Dr. Kar at Kean University.</p>
+        <div className="contact-orbit" aria-hidden="true"></div><p className="eyebrow">10 · Contact</p><h2>Let&apos;s connect around <em>predictive science.</em></h2><p>For research collaborations, student mentorship, editorial work and invited talks, contact Dr. Kar at Kean University.</p>
         <div className="contact-actions"><a className="button button-light" href="mailto:skar@kean.edu">skar@kean.edu <span aria-hidden="true">↗</span></a><a className="button button-outline-light" href="tel:+19087373683">+1 908 737 3683 <span aria-hidden="true">↗</span></a></div>
         <div className="contact-meta"><span><small>Offices</small>C-234 · Science Building<br />STEM 502D · STEM Building</span><span><small>Department</small>Chemistry &amp; Physics</span><span><small>Institution</small>Kean University · Union, New Jersey, USA</span></div>
       </section>

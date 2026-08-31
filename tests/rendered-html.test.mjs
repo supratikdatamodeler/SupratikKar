@@ -61,13 +61,24 @@ test("server-renders the finished research site", async () => {
   assert.match(html, /Scientist, Educator, Mentor\./);
   assert.match(html, /tenured Associate Professor and Principal Investigator/);
   assert.match(html, /Latest 25 papers/);
+  assert.match(html, /10,740/);
+  assert.match(html, /125 peer-reviewed articles/);
+  assert.match(html, /<strong>30<\/strong><span>Published chapters<\/span>/);
   assert.match(html, /Incoming graduate student at Johns Hopkins University/);
   assert.match(html, /Old Research website/);
   assert.match(html, /class="role-title">Associate Editor/);
   assert.match(html, /class="role-journal">Molecular Diversity/);
   assert.match(html, /CMM Laboratory/);
   assert.match(html, /KidneyTox_v1\.0/);
+  assert.match(html, /MammalTox/);
+  assert.match(html, /https:\/\/mammaltox\.streamlit\.app\//);
+  assert.match(html, /Inavolisib: a second-generation PI3K/);
   assert.match(html, /Kean University Student Research Mentor Award/);
+  assert.match(html, /id="news"/);
+  assert.match(html, /Research in the news/);
+  assert.match(html, /Kean Professor Leading Research Toward Zika Virus Treatment/);
+  assert.match(html, /Kean University Gets NSF Grant to Probe Biological Insecticides/);
+  assert.match(html, /href="#news">News<\/a>/);
   assert.match(html, /Institutional seed funding/);
   assert.match(html, /Institutional research fund/);
   assert.match(html, /Overall funding including internal projects/);
@@ -90,6 +101,7 @@ test("keeps the product metadata and assets wired", async () => {
   assert.match(page, /\/profile\.jpg/);
   assert.match(page, /Google Scholar/);
   assert.match(page, /id="publications"/);
+  assert.match(page, /id="news"/);
   assert.match(page, /id="gallery"/);
   assert.match(layout, /\/og\.png/);
   assert.match(layout, /x-forwarded-host/);
@@ -100,7 +112,16 @@ test("keeps the product metadata and assets wired", async () => {
     readFile(new URL("../public/nyc-skyline-panorama.png", import.meta.url)),
     readFile(new URL("../public/gallery/kean-1.jpg", import.meta.url)),
     readFile(new URL("../public/gallery/wix/kean-21.webp", import.meta.url)),
+    readFile(new URL("../public/gallery/wix/kean-22.webp", import.meta.url)),
+    readFile(new URL("../public/gallery/wix/kean-23.webp", import.meta.url)),
+    readFile(new URL("../public/gallery/wix/kean-24.webp", import.meta.url)),
     readFile(new URL("../public/gallery/wix/cmm-20.webp", import.meta.url)),
     readFile(new URL("../public/gallery/wix/cmm-08.webp", import.meta.url)),
+    readFile(new URL("../public/news/zika-2025.webp", import.meta.url)),
+    readFile(new URL("../public/news/qa-2024.webp", import.meta.url)),
+    readFile(new URL("../public/news/top-scientist-2023.webp", import.meta.url)),
+    readFile(new URL("../public/news/top-scientists-2024.webp", import.meta.url)),
+    readFile(new URL("../public/news/top-scientists-2025.webp", import.meta.url)),
+    readFile(new URL("../public/news/nsf-fungi-2025.webp", import.meta.url)),
   ]);
 });
