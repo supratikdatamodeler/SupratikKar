@@ -138,7 +138,56 @@ export const memberships = [
   { title: "Bentham Science", label: "Brand Ambassador · since 2016", text: "Longstanding scientific publishing and outreach service." },
 ];
 
+export const researchPlatformSupport = [
+  {
+    provider: "OpenAI",
+    duration: "12 months",
+    title: "ChatGPT for Academic Researchers",
+    text: "Complimentary research workspace for Dr. Kar and up to four verified student collaborators (five seats total).",
+    href: "https://openai.com/index/chatgpt-for-academic-researchers/",
+  },
+  {
+    provider: "Anthropic",
+    duration: "12 months",
+    title: "Claude Team plan for scientists",
+    text: "Promotional access for the CMM Laboratory research group, with up to 25 Standard seats under the program terms.",
+    href: "https://www.anthropic.com/legal/team-plan-for-scientists-terms",
+  },
+];
+
 export const newsItems = [
+  {
+    year: "2026",
+    date: "September 13",
+    source: "The Ridgewood Blog",
+    title: "Game-Changer in Medicine: Free AI Tool Spotlights Drug Safety Before Clinical Trials",
+    image: "/gallery/wix/kean-22.webp",
+    href: "https://theridgewoodblog.net/game-changer-in-medicine-free-ai-tool-spotlights-drug-safety-before-clinical-trials/",
+  },
+  {
+    year: "2026",
+    date: "September 11",
+    source: "RLS Media",
+    title: "Kean University Professor Helps Develop AI Tool to Predict Kidney Damage From Potential Medicines",
+    image: "/gallery/wix/kean-22.webp",
+    href: "https://www.rlsmedia.com/article/kean-university-professor-helps-develop-ai-tool-predict-kidney-damage-potential-medicines",
+  },
+  {
+    year: "2026",
+    date: "September 10",
+    source: "Insider NJ",
+    title: "Kean Researcher Develops AI Tool to Help Make Drug Discovery Safer and More Efficient",
+    image: "/gallery/wix/kean-22.webp",
+    href: "https://www.insidernj.com/press-release/kean-researcher-develops-ai-tool-to-help-make-drug-discovery-safer-and-more-efficient/",
+  },
+  {
+    year: "2026",
+    date: "September 4",
+    source: "Kean University",
+    title: "Kean Researcher Develops AI Tool to Help Make Drug Discovery Safer and More Efficient",
+    image: "/gallery/wix/kean-22.webp",
+    href: "https://www.kean.edu/news/kean-researcher-develops-ai-tool-help-make-drug-discovery-safer-and-more-efficient-0",
+  },
   {
     year: "2025",
     date: "December 9",

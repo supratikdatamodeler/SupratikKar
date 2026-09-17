@@ -58,10 +58,12 @@ test("server-renders the finished research site", async () => {
   const html = await response.text();
   assert.match(html, /<title>Dr\. Supratik Kar \| Computational Chemistry &amp; Predictive Toxicology<\/title>/i);
   assert.match(html, /Making chemistry more/);
+  assert.match(html, /predictive<\/em> and discovery more/);
+  assert.match(html, /class="hero-name">Dr\. Supratik Kar,/);
   assert.match(html, /Scientist, Educator, Mentor\./);
   assert.match(html, /tenured Associate Professor and Principal Investigator/);
   assert.match(html, /Latest 25 papers/);
-  assert.match(html, /10,740/);
+  assert.match(html, /10,824/);
   assert.match(html, /125 peer-reviewed articles/);
   assert.match(html, /<strong>30<\/strong><span>Published chapters<\/span>/);
   assert.match(html, /Incoming graduate student at Johns Hopkins University/);
@@ -76,6 +78,11 @@ test("server-renders the finished research site", async () => {
   assert.match(html, /Kean University Student Research Mentor Award/);
   assert.match(html, /id="news"/);
   assert.match(html, /Research in the news/);
+  assert.match(html, /ChatGPT for Academic Researchers/);
+  assert.match(html, /Claude Team plan for scientists/);
+  assert.match(html, /AI access for the CMM Laboratory/);
+  assert.match(html, /Kean University Professor Helps Develop AI Tool to Predict Kidney Damage/);
+  assert.match(html, /Game-Changer in Medicine: Free AI Tool Spotlights Drug Safety/);
   assert.match(html, /Kean Professor Leading Research Toward Zika Virus Treatment/);
   assert.match(html, /Kean University Gets NSF Grant to Probe Biological Insecticides/);
   assert.match(html, /href="#news">News<\/a>/);

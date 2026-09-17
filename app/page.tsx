@@ -1,6 +1,6 @@
 ﻿import {
   alumni, awards, books, currentMembers, editorialRoles, galleryEras, grants,
-  memberships, newsItems, profiles, publications, researchAreas, tools,
+  memberships, newsItems, profiles, publications, researchAreas, researchPlatformSupport, tools,
 } from "./site-data";
 
 function ExternalLink({ href, children, className = "" }: { href: string; children: React.ReactNode; className?: string }) {
@@ -33,8 +33,8 @@ export default function Home() {
         <div className="hero-grid" aria-hidden="true"></div>
         <div className="hero-copy">
           <p className="hero-kicker"><span></span> Medicinal chemistry · computational science · cheminformatics · CADD</p>
-          <h1 id="hero-title">Making chemistry more <em>predictive</em>—and discovery more <em>responsible.</em></h1>
-          <p className="hero-lede">Dr. Supratik Kar, tenured Associate Professor and Principal Investigator of the Chemometrics and Molecular Modeling Laboratory in the Department of Chemistry and Physics at Kean University, New Jersey, USA, develops interpretable computational models, open tools and research experiences that connect molecular insight to drug safety, environmental risk and new therapeutics.</p>
+          <h1 id="hero-title">Making chemistry more <em>predictive</em> and discovery more <em>responsible.</em></h1>
+          <p className="hero-lede"><strong className="hero-name">Dr. Supratik Kar,</strong> tenured Associate Professor and Principal Investigator of the Chemometrics and Molecular Modeling Laboratory in the Department of Chemistry and Physics at Kean University, New Jersey, USA, develops interpretable computational models, open tools and research experiences that connect molecular insight to drug safety, environmental risk and new therapeutics.</p>
           <p className="hero-highlight"><strong>Internationally recognized QSAR expert</strong> and repeatedly listed among the world’s <strong>Top 2% Scientists</strong>, advancing transparent predictive chemistry across drug discovery, toxicology and environmental health.</p>
           <div className="hero-actions"><a className="button button-primary" href="#research">Explore the research <span aria-hidden="true">↓</span></a><ExternalLink className="button button-secondary" href="https://www.kean.edu/directory/supratik-kar">Kean profile</ExternalLink></div>
         </div>
@@ -45,7 +45,7 @@ export default function Home() {
         </div>
         <div className="hero-stats" aria-label="Current research metrics">
           <div><strong>125</strong><span>Peer-reviewed<br />articles</span></div><div><strong>2</strong><span>International<br />textbooks</span></div><div><strong>3</strong><span>Edited<br />books</span></div><div><strong>30</strong><span>Published book<br />chapters</span></div>
-          <div><strong>6</strong><span>Edited thematic<br />issues</span></div><div><strong>10,740</strong><span>Google Scholar<br />citations</span></div><div><strong>51</strong><span>Google Scholar<br />h-index</span></div><div><strong>$1.435M</strong><span>Funding<br />secured</span></div>
+          <div><strong>6</strong><span>Edited thematic<br />issues</span></div><div><strong>10,824</strong><span>Google Scholar<br />citations</span></div><div><strong>51</strong><span>Google Scholar<br />h-index</span></div><div><strong>$1.435M</strong><span>Funding<br />secured</span></div>
         </div>
       </section>
 
@@ -110,6 +110,8 @@ export default function Home() {
           <div className="awards-list">{awards.map((award) => <article key={award.title + award.year}><time>{award.year}</time><div><h3>{award.title}</h3><p>{award.text}</p>{award.href ? <ExternalLink className="award-link" href={award.href}>Evidence and record</ExternalLink> : null}</div></article>)}</div>
           <aside className="service-panel"><p className="eyebrow">Scientific service</p><h3>Editorial &amp; reviewer roles</h3><ol className="role-list">{editorialRoles.map((item) => <li key={item.role + item.journal}><span className="role-title">{item.role}</span><strong className="role-journal">{item.journal}</strong>{item.detail ? <small className="role-detail">{item.detail}</small> : null}<time className="role-period">{item.period}</time></li>)}</ol><div className="review-totals"><div><strong>80+</strong><span>Journals served</span></div><div><strong>280+</strong><span>Manuscript reviews</span></div><div><strong>300+</strong><span>Editorial decisions</span></div></div><div className="service-group"><span>Grant &amp; government review</span><p>SERDP, ANR, Poland’s National Science Centre, Royal Society FLAIR and external peer review of Health Canada risk assessments.</p></div></aside>
         </div>
+        <div className="research-support-heading"><p className="eyebrow">Research platform support</p><h3>AI access for the CMM Laboratory</h3><p>Complimentary research access, listed separately from formal awards and grant funding.</p></div>
+        <div className="research-support-grid">{researchPlatformSupport.map((item) => <article key={item.title}><small>{item.provider} · {item.duration}</small><h4>{item.title}</h4><p>{item.text}</p><ExternalLink className="award-link" href={item.href}>Program details</ExternalLink></article>)}</div>
         <div className="membership-heading"><p className="eyebrow">Professional affiliations</p><h3>Memberships &amp; ambassador service</h3></div>
         <div className="membership-grid">{memberships.map((item) => <article key={item.title}><small>{item.label}</small><h3>{item.title}</h3><p>{item.text}</p></article>)}</div>
       </section>

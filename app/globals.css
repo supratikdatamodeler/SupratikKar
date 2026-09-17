@@ -490,6 +490,7 @@ footer > div a { color: var(--white); }
 .hero h1 { font-size: clamp(22px, 1.9vw, 28px); line-height: 1.18; letter-spacing: -.02em; max-width: 620px; }
 .hero-kicker { font-size: 10px; line-height: 1.6; max-width: 760px; }
 .hero-lede { font-size: clamp(18px, 1.55vw, 23px); font-family: var(--serif); font-weight: 700; color: var(--teal-dark); }
+.hero-name { color: #164a9b; font-family: var(--sans); font-weight: 900; }
 .hero-highlight {
   max-width: 760px;
   margin: 22px 0 0;
@@ -587,6 +588,14 @@ footer > div a { color: var(--white); }
 .membership-grid small { color: var(--teal); font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
 .membership-grid h3 { margin: 10px 0; font: 700 23px/1.1 var(--serif); }
 .membership-grid p { color: #52606a; font-size: 12px; line-height: 1.6; }
+.research-support-heading { margin-top: 80px; }
+.research-support-heading h3 { margin: 8px 0 12px; font: 700 clamp(28px, 4vw, 50px)/1.05 var(--serif); }
+.research-support-heading > p:last-child { margin: 0 0 24px; color: var(--ink-soft); font-size: 15px; line-height: 1.5; }
+.research-support-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.research-support-grid article { padding: 28px; background: white; border-top: 5px solid var(--teal); box-shadow: 0 8px 24px rgba(6,31,47,.08); }
+.research-support-grid small { color: var(--teal-dark); font-size: 13px; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
+.research-support-grid h4 { margin: 12px 0; font: 700 clamp(22px, 2vw, 29px)/1.15 var(--serif); }
+.research-support-grid p { margin: 0 0 14px; color: var(--ink-soft); font-size: 16px; line-height: 1.55; }
 .news-section { background: #f7f4ec; }
 .news-years { display: grid; gap: clamp(60px, 7vw, 96px); }
 .news-year-group { display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: clamp(28px, 4vw, 62px); align-items: start; }
@@ -643,6 +652,7 @@ footer .brand-logo { width: 56px; height: 56px; }
   .news-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .era-grid { grid-template-columns: repeat(3, 1fr); }
   .membership-grid { grid-template-columns: 1fr; }
+  .research-support-grid { grid-template-columns: 1fr; }
   .lab-banner { grid-template-columns: 120px 1fr; }
   .lab-banner img { width: 110px; height: 110px; }
 }
