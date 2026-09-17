@@ -161,7 +161,7 @@ export const newsItems = [
     date: "September 13",
     source: "The Ridgewood Blog",
     title: "Game-Changer in Medicine: Free AI Tool Spotlights Drug Safety Before Clinical Trials",
-    image: "/news/kean-kidneytox-2026.jpg",
+    image: "/kean-kidneytox-2026.jpg",
     href: "https://theridgewoodblog.net/game-changer-in-medicine-free-ai-tool-spotlights-drug-safety-before-clinical-trials/",
   },
   {
@@ -169,7 +169,7 @@ export const newsItems = [
     date: "September 11",
     source: "RLS Media",
     title: "Kean University Professor Helps Develop AI Tool to Predict Kidney Damage From Potential Medicines",
-    image: "/news/kean-kidneytox-2026.jpg",
+    image: "/kean-kidneytox-2026.jpg",
     href: "https://www.rlsmedia.com/article/kean-university-professor-helps-develop-ai-tool-predict-kidney-damage-potential-medicines",
   },
   {
@@ -177,7 +177,7 @@ export const newsItems = [
     date: "September 10",
     source: "Insider NJ",
     title: "Kean Researcher Develops AI Tool to Help Make Drug Discovery Safer and More Efficient",
-    image: "/news/kean-kidneytox-2026.jpg",
+    image: "/kean-kidneytox-2026.jpg",
     href: "https://www.insidernj.com/press-release/kean-researcher-develops-ai-tool-to-help-make-drug-discovery-safer-and-more-efficient/",
   },
   {
@@ -185,7 +185,7 @@ export const newsItems = [
     date: "September 4",
     source: "Kean University",
     title: "Kean Researcher Develops AI Tool to Help Make Drug Discovery Safer and More Efficient",
-    image: "/news/kean-kidneytox-2026.jpg",
+    image: "/kean-kidneytox-2026.jpg",
     href: "https://www.kean.edu/news/kean-researcher-develops-ai-tool-help-make-drug-discovery-safer-and-more-efficient-0",
   },
   {
